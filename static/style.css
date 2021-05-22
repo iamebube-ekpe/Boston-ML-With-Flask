@@ -1,0 +1,10 @@
+form {
+    margin: auto;
+    width: 35%;
+}
+    
+.result {
+    margin: auto;
+    width: 35%;
+    border: 1px solid #ccc;
+}

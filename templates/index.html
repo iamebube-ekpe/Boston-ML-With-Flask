@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title%} Boston Prediction {% endblock %} 
+
+<!-- Content -->
+{% block content %}
+
+<form action="{{ url_for('index') }}" method="POST">
+    <fieldset>
+        <legend>Input value:</legend>
+        <div class="mb-3">
+            <label for="InputRMNumber" class="form-label"> Average Number Of Rooms Dwelling:</label>
+            <input type="number" step="any" class="form-control" id="InputRMNumber" name="rm" aria-describedby="rmHelp" required autocomplete="off">
+            <div id="helpHelp" class="form-text">Please input a positive number</div>
+        </div>
+        <div class="mb-3">
+            <label for="InputZNNumber" class="form-label">Proportion of residential land zoned:</label>
+            <input type="number" step="any" class="form-control" id="InputZNNumber" name="zn" required autocomplete="off">
+            <div id="helpHelp" class="form-text">Please input a positive number</div>
+        </div>
+        <div class="mb-3">
+            <label for="InputBNumber" class="form-label">Proportion of people African Americans: </label>
+            <input type="number" step="any" class="form-control" id="InputBNumber" name="b" required autocomplete="off">
+            <div id="helpHelp" class="form-text">Please input a positive number</div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+</form>
+<br>
+<div class="result" align="center">
+    {% if result %} {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }} {% endfor %}
+    <br>
+    <br> Predicted price of the house:
+    <p style="font-size:50px">{{ result }}</p>
+    {% endif %}
+</div>
+
+{% endblock %}
